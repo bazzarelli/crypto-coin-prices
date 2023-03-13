@@ -1,19 +1,41 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Inter } from 'next/font/google'
+import { CoinContext } from '@/lib/context'
 import styles from '@/styles/Home.module.css'
 import FetchCoinData from '@/components/FetchCoinData'
-import FetchCoinPriceHistory from '@/components/FetchCoinPriceHistory'
+import { capitalize } from '@/lib/utils'
 
-const inter = Inter({ subsets: ['latin'] })
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis
+} from 'recharts';
 
-export default function Home() {
-  const [chartCoin, setChartCoin] = useState('bitcoin')
-  console.log('chartCoin', chartCoin)
+const inter = Inter({ subsets: ['latin'] });
 
-  const bitcoinFiveYearData: any = FetchCoinPriceHistory(chartCoin);
-  console.table(bitcoinFiveYearData.prices);
+interface Coin {
+  prices: Array<number[]>;
+  market_caps: Array<number[]>;
+  total_volumes: Array<number[]>;
+}
+
+export default function Home(): React.ReactElement<Coin> {
+  const {chartCoin, setChartCoin} = useContext(CoinContext);
+  const [data, setData] = useState<Coin[]>([]);
+  const myCoins = ['bitcoin', 'ethereum', 'cardano', 'aave'];
+
+  useEffect(() => {
+    fetch(`https://api.coingecko.com/api/v3/coins/${chartCoin}/market_chart/range?vs_currency=usd&from=1514793600&to=1678254666`)
+      .then(response => response.json())
+      .then(data => setData(data['prices'].map((day: any[]) => {
+        return {
+          price: day[1]
+        }
+      })))
+      .catch(error => console.error(error));
+  }, [chartCoin]);
 
   return (
     <>
@@ -24,49 +46,34 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+
         <div className={styles.description}>
-          <p>
-            Choose your coin and see the 5 year chart
-          </p>
+          <p>5-year price chart for {capitalize(chartCoin)}</p>
         </div>
 
         <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-          <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
-          </div>
+          <AreaChart width={768} height={256} data={data}>
+            <defs>
+              <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+              </linearGradient>
+            </defs>
+            {/* change the labels to be years */}
+            <XAxis ticks={[2019,2020,2021,2022,2023]} />
+            <YAxis />
+            <Area type="monotone" dataKey="price" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+          </AreaChart>
         </div>
 
         <div className={styles.grid}>
-          <button onClick={() => setChartCoin('bitcoin')} className={styles.card}>
-            <FetchCoinData coin='bitcoin' />
-          </button>
-
-          <button onClick={() => setChartCoin('ethereum')} className={styles.card}>
-            <FetchCoinData coin='ethereum' />
-          </button>
-
-          <button onClick={() => setChartCoin('ethereum')} className={styles.card}>
-            <FetchCoinData coin='cardano' />
-          </button>
-
-          <button onClick={() => setChartCoin('aave')} className={styles.card}>
-            <FetchCoinData coin='aave' />
-          </button>
+          {myCoins.map((coin) => (
+            <div key={coin}>
+              <FetchCoinData coin={coin} />
+            </div>
+          ))}
         </div>
+
       </main>
     </>
   )

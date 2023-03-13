@@ -1,0 +1,44 @@
+.button {
+    padding: 1rem 1.2rem;
+    border-radius: var(--border-radius);
+    background: rgba(var(--card-rgb), 0);
+    border: 1px solid rgba(var(--card-border-rgb), 0);
+    transition: background 200ms, border 200ms;
+    cursor: pointer;
+    text-align: left;
+}
+
+.button:hover {
+    background: rgba(var(--card-rgb), 0.1);
+    border: 1px solid rgba(var(--card-border-rgb), 0.15);
+}
+
+.button span {
+    transition: transform 200ms;
+    vertical-align: text-bottom;
+    margin-left: 0.5rem;
+}
+
+.button h2 {
+    font-weight: 600;
+    margin-bottom: 0.7rem;
+}
+
+.button p {
+    margin: 0;
+    opacity: 0.6;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    max-width: 30ch;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .button {
+        padding: 1rem 2.5rem;
+    }
+
+    .button h2 {
+        margin-bottom: 0.5rem;
+    }
+}
