@@ -6,11 +6,13 @@
     transition: background 200ms, border 200ms;
     cursor: pointer;
     text-align: left;
+    background: rgba(var(--card-rgb), 0.1);
+    border: 1px solid rgba(var(--card-border-rgb), 0.15);
 }
 
 .button:hover {
-    background: rgba(var(--card-rgb), 0.1);
-    border: 1px solid rgba(var(--card-border-rgb), 0.15);
+    background: rgba(var(--card-rgb), 0.3);
+    border: 1px solid rgba(var(--card-border-rgb), 0.45);
 }
 
 .button span {

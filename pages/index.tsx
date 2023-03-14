@@ -85,8 +85,8 @@ export default function Home(): React.ReactElement<Coin> {
                 </linearGradient>
               </defs>
               <XAxis stroke="#999999" ticks={[2019, 2020, 2021, 2022, 2023]} />
-              <YAxis style={{fontFamily:'Arial', fontSize: '0.7rem'}} label={{ value: 'USD', offset: 13, position: 'insideBottomLeft', fill: '#777ace' }} stroke="#EEEEEE" />
-              <Tooltip labelFormatter={(value) => daysAfterNewYears2018(parseInt(value))} contentStyle={chartTooltipContentStyle} itemStyle={chartTooltipItemStyle} position={{x:640,y:0}} separator=': ' formatter={(value, name) => [`$${value.toLocaleString('en-US', {maximumFractionDigits:2})}`, name]} />
+              <YAxis style={{fontFamily:'Arial', fontSize: '0.8rem'}} label={{ value: 'USD', offset: 13, position: 'insideBottomLeft', fill: '#777ace' }} stroke="#EEEEEE" />
+              <Tooltip labelFormatter={(value) => daysAfterNewYears2018(parseInt(value))} contentStyle={chartTooltipContentStyle} itemStyle={chartTooltipItemStyle} separator=': ' formatter={(value, name) => [`$${value.toLocaleString('en-US', {maximumFractionDigits:2})}`, name]} />
               <Area type="monotone" dataKey="price" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
             </AreaChart>
           </ResponsiveContainer>
