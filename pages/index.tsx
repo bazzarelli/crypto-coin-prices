@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import Image from 'next/image'
+import moment from 'moment'
 import React, { useState, useEffect, useContext } from 'react'
 import { Inter } from 'next/font/google'
 import { CoinContext } from '@/lib/context'
@@ -10,10 +12,25 @@ import {
   AreaChart,
   Area,
   XAxis,
-  YAxis
+  YAxis,
+  Tooltip
 } from 'recharts';
 
 const inter = Inter({ subsets: ['latin'] });
+const chartTooltipContentStyle = {
+  fontFamily: 'Arial',
+  backgroundColor: '#000a2a',
+  color: '#777ace',
+  fontSize: '11px',
+  padding: '10px',
+  border: '1px solid #777ace',
+}
+const chartTooltipItemStyle = {
+  color: '#999',
+  fontSize: '13px',
+  backgroundColor: '#1a0b5e',
+  padding: '7px',
+}
 
 interface Coin {
   prices: Array<number[]>;
@@ -22,12 +39,17 @@ interface Coin {
 }
 
 export default function Home(): React.ReactElement<Coin> {
-  const {chartCoin, setChartCoin} = useContext(CoinContext);
+  const { chartCoin } = useContext(CoinContext);
   const [data, setData] = useState<Coin[]>([]);
   const myCoins = ['bitcoin', 'ethereum', 'cardano', 'aave'];
+  const newYears2018 = 1514793600;
+  const today = Math.floor(Date.now() / 1000);
+  const daysAfterNewYears2018 = (date: number) => {
+    return moment('2018-01-01').add(date, 'days').format('ll');
+  };
 
   useEffect(() => {
-    fetch(`https://api.coingecko.com/api/v3/coins/${chartCoin}/market_chart/range?vs_currency=usd&from=1514793600&to=1678254666`)
+    fetch(`https://api.coingecko.com/api/v3/coins/${chartCoin}/market_chart/range?vs_currency=usd&from=${newYears2018}&to=${today}}`)
       .then(response => response.json())
       .then(data => setData(data['prices'].map((day: any[]) => {
         return {
@@ -41,17 +63,18 @@ export default function Home(): React.ReactElement<Coin> {
     <>
       <Head>
         <title>Coin prices</title>
-        <meta name="description" content="simple test of swr data fetching" />
+        <meta name="description" content="data fetching demo with coin gecko api" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
 
         <div className={styles.description}>
-          <p>5-year price chart for {capitalize(chartCoin)}</p>
+          <p>5 year price chart for {capitalize(chartCoin)}</p>
         </div>
 
-        <div className={styles.center}>
+        <div className={styles.chart}>
+          <Image src={`/${chartCoin}.svg`} alt={`${chartCoin} logo`} width={100} height={100} />
           <AreaChart width={768} height={256} data={data}>
             <defs>
               <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -60,8 +83,9 @@ export default function Home(): React.ReactElement<Coin> {
               </linearGradient>
             </defs>
             {/* change the labels to be years */}
-            <XAxis ticks={[2019,2020,2021,2022,2023]} />
-            <YAxis />
+            <XAxis stroke="#999999" ticks={[2019, 2020, 2021, 2022, 2023]} />
+            <YAxis style={{fontFamily:'Arial', fontSize: '0.7rem'}} label={{ value: 'USD', offset: 13, position: 'insideBottomLeft', fill: '#777ace' }} stroke="#EEEEEE" />
+            <Tooltip labelFormatter={(value) => daysAfterNewYears2018(parseInt(value))} contentStyle={chartTooltipContentStyle} itemStyle={chartTooltipItemStyle} position={{x:640,y:0}} separator=': ' formatter={(value, name) => [`$${value.toLocaleString('en-US', {maximumFractionDigits:2})}`, name]} />
             <Area type="monotone" dataKey="price" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
           </AreaChart>
         </div>

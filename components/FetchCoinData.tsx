@@ -15,13 +15,13 @@ export default function FetchCoinData(coin: { [x: string]: any }): JSX.Element {
   const address = `https://api.coingecko.com/api/v3/coins/${coin['coin']}`;
   const { data, error } = useSWR(address, fetcher);
 
-  if (error) return <div>error loading data</div>;
+  if (error) return <div>Error loading data</div>;
   if (!data) return <div>loading...</div>;
 
   return (
     <button className={styles.button} onClick={() => setChartCoin(data.name.toLowerCase())}>
       <p className={inter.className}>
-        <Image src={`/${data.name}.svg`} alt="Bitcoin logo" width={20} height={20} />
+        <Image src={`/${data.name}.svg`} alt={`${data.name} logo`} width={20} height={20} />
         <span>{data.name}</span>
       </p>
       <p className={inter.className}>
