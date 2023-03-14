@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import moment from 'moment'
-import React, { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Inter } from 'next/font/google'
 import { CoinContext } from '@/lib/context'
 import styles from '@/styles/Home.module.css'

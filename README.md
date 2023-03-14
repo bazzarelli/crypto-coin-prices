@@ -1,10 +1,11 @@
-## I started with the base NextJS --typescript install
+## Starting from the base NextJS install
 
 ### enhancements added so far:
 
-* SWR hook for data fetching from coingecko api
-* Recharts to display crypto coin chart
-* Simple state management (useState, useEffect, useContext)
+* Typescript added to learn about React/Typescript
+* SWR hooks for data fetching and cacheing
+* Recharts to display crypto coin charts
+* Simple state management hooks (useState, useEffect, useContext)
 
 
 

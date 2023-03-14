@@ -8,6 +8,7 @@
     text-align: left;
     background: rgba(var(--card-rgb), 0.1);
     border: 1px solid rgba(var(--card-border-rgb), 0.15);
+    margin-bottom: 20px;
 }
 
 .button:hover {
