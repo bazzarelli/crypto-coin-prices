@@ -13,6 +13,7 @@ import {
   Area,
   XAxis,
   YAxis,
+  ResponsiveContainer,
   Tooltip
 } from 'recharts';
 
@@ -75,19 +76,20 @@ export default function Home(): React.ReactElement<Coin> {
 
         <div className={styles.chart}>
           <Image src={`/${chartCoin}.svg`} alt={`${chartCoin} logo`} width={100} height={100} />
-          <AreaChart width={768} height={256} data={data}>
-            <defs>
-              <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-                <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
-              </linearGradient>
-            </defs>
-            {/* change the labels to be years */}
-            <XAxis stroke="#999999" ticks={[2019, 2020, 2021, 2022, 2023]} />
-            <YAxis style={{fontFamily:'Arial', fontSize: '0.7rem'}} label={{ value: 'USD', offset: 13, position: 'insideBottomLeft', fill: '#777ace' }} stroke="#EEEEEE" />
-            <Tooltip labelFormatter={(value) => daysAfterNewYears2018(parseInt(value))} contentStyle={chartTooltipContentStyle} itemStyle={chartTooltipItemStyle} position={{x:640,y:0}} separator=': ' formatter={(value, name) => [`$${value.toLocaleString('en-US', {maximumFractionDigits:2})}`, name]} />
-            <Area type="monotone" dataKey="price" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
-          </AreaChart>
+          <ResponsiveContainer width="90%" height={300}>
+            <AreaChart data={data}>
+              <defs>
+                <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+                </linearGradient>
+              </defs>
+              <XAxis stroke="#999999" ticks={[2019, 2020, 2021, 2022, 2023]} />
+              <YAxis style={{fontFamily:'Arial', fontSize: '0.7rem'}} label={{ value: 'USD', offset: 13, position: 'insideBottomLeft', fill: '#777ace' }} stroke="#EEEEEE" />
+              <Tooltip labelFormatter={(value) => daysAfterNewYears2018(parseInt(value))} contentStyle={chartTooltipContentStyle} itemStyle={chartTooltipItemStyle} position={{x:640,y:0}} separator=': ' formatter={(value, name) => [`$${value.toLocaleString('en-US', {maximumFractionDigits:2})}`, name]} />
+              <Area type="monotone" dataKey="price" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+            </AreaChart>
+          </ResponsiveContainer>
         </div>
 
         <div className={styles.grid}>
