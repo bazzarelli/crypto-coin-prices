@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import moment from 'moment'
 import { useState, useEffect, useContext } from 'react'
-import { Inter } from 'next/font/google'
+import { Inter, Nothing_You_Could_Do } from 'next/font/google'
 import { CoinContext } from '@/lib/context'
 import styles from '@/styles/Home.module.css'
 import FetchCoinData from '@/components/FetchCoinData'
@@ -17,7 +17,12 @@ import {
   Tooltip
 } from 'recharts';
 
+const nothing = Nothing_You_Could_Do({
+  weight: '400',
+  preload: false
+});
 const inter = Inter({ subsets: ['latin'] });
+
 const chartTooltipContentStyle = {
   fontFamily: 'Arial',
   backgroundColor: '#000a2a',
@@ -71,7 +76,7 @@ export default function Home(): React.ReactElement<Coin> {
       <main className={styles.main}>
 
         <div className={styles.description}>
-          <p>5 year price chart for {capitalize(chartCoin)}</p>
+          <p className={nothing.className}>5 year price chart for {capitalize(chartCoin)}</p>
         </div>
 
         <div className={styles.chart}>
