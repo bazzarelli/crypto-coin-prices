@@ -1,8 +1,8 @@
-## Starting from the base NextJS install
+## Crypto Coin Prices
 
-### enhancements added so far:
+### features added:
 
-* Typescript added to learn about React/Typescript
+* Typescript
 * SWR hooks for data fetching and cacheing
 * Recharts to display crypto coin charts
 * Simple state management hooks (useState, useEffect, useContext)

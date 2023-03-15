@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const ContentSecurityPolicy = `
-  connect-src 'self' api.coingecko.com;
+  connect-src 'self' api.coingecko.com vitals.vercel-insights.com;
   default-src 'self' api.coingecko.com;
   script-src 'self' api.coingecko.com;
   child-src 'self' api.coingecko.com;

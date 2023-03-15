@@ -27,6 +27,7 @@
   position: relative;
   margin: 0;
   padding: 0.5rem 1rem;
+  font-size: 2rem;
   background-color: rgba(var(--callout-rgb), 0.2);
   border: 1px solid rgba(var(--callout-border-rgb), 0.3);
 }
@@ -44,7 +45,7 @@
 }
 
 .chart img {
-  opacity: 0.75;
+  opacity: 0.9;
   position: absolute;
   left: 90px;
   top: 30px;
