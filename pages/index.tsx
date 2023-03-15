@@ -17,10 +17,8 @@ import {
   Tooltip
 } from 'recharts';
 
-const nothing = Nothing_You_Could_Do({
-  weight: '400',
-  preload: false
-});
+
+const nothing = Nothing_You_Could_Do({weight: '400', preload: false});
 const inter = Inter({ subsets: ['latin'] });
 
 const chartTooltipContentStyle = {
@@ -89,6 +87,7 @@ export default function Home(): React.ReactElement<Coin> {
                   <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
                 </linearGradient>
               </defs>
+              {/* TODO: get correct xaxis date labels and ticks to display */}
               <XAxis stroke="#999999" ticks={[2019, 2020, 2021, 2022, 2023]} />
               <YAxis style={{fontFamily:'Arial', fontSize: '0.8rem'}} label={{ value: 'USD', offset: 13, position: 'insideBottomLeft', fill: '#777ace' }} stroke="#EEEEEE" />
               <Tooltip labelFormatter={(value) => daysAfterNewYears2018(parseInt(value))} contentStyle={chartTooltipContentStyle} itemStyle={chartTooltipItemStyle} separator=': ' formatter={(value, name) => [`$${value.toLocaleString('en-US', {maximumFractionDigits:2})}`, name]} />

@@ -13,7 +13,7 @@ const fetcher = async (url: string) => await axios.get(url).then((res) => res.da
 export default function FetchCoinData(coin: { [x: string]: any }): JSX.Element {
   const { setChartCoin } = useContext(CoinContext);
   const address = `https://api.coingecko.com/api/v3/coins/${coin['coin']}`;
-  const { data, error } = useSWR(address, fetcher, { refreshInterval: 60000 });
+  const { data, error } = useSWR(address, fetcher, { refreshInterval: 300000 });
 
   if (error) return <div>Error loading data</div>;
   if (!data) return <div>loading...</div>;
