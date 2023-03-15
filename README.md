@@ -7,6 +7,7 @@
 * Recharts to display crypto coin charts
 * Simple state management hooks (useState, useEffect, useContext)
 
+[View live demo of WIP](https://crypto-coin-prices.vercel.app/)
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).

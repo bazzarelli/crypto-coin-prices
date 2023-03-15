@@ -1,11 +1,12 @@
 /** @type {import('next').NextConfig} */
 
 const ContentSecurityPolicy = `
-  default-src 'self';
+  connect-src 'self' api.coingecko.com;
+  default-src 'self' api.coingecko.com;
   script-src 'self' api.coingecko.com;
-  child-src 'self';
-  style-src 'self';
-  font-src 'self';
+  child-src 'self' api.coingecko.com;
+  style-src 'self' 'unsafe-inline';
+  font-src 'self' fonts.gstatic.com;
 `
 const securityHeaders = [
   {
