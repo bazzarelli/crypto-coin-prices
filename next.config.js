@@ -12,6 +12,10 @@ const securityHeaders = [
   {
     key: 'Content-Security-Policy',
     value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim()
+  },
+  {
+    key: 'Access-Control-Allow-Origin',
+    value: '*'
   }
 ]
 
