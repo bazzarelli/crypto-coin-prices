@@ -15,7 +15,7 @@ const securityHeaders = [
   },
   {
     key: 'Access-Control-Allow-Origin',
-    value: '*'
+    value: 'no-cors'
   }
 ]
 

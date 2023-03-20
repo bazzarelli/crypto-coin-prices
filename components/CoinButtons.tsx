@@ -1,27 +1,25 @@
-import axios from 'axios'
-import useSWR from 'swr'
 import moment from 'moment'
 import Image from 'next/image'
 import styles from '@/styles/CoinButton.module.css'
 import { CoinContext } from '@/lib/context'
 import { Inter } from 'next/font/google'
 import { useContext } from 'react'
+import type { CoinSpotPrice } from '@/lib/types'
+import { useCoinGeckoSpotPrice } from '@/lib/useCoinGecko'
 
 const inter = Inter({ subsets: ['latin'] })
-const fetcher = async (url: string) => await axios.get(url).then((res) => res.data);
 
-export default function FetchCoinData(coin: { [x: string]: any }): JSX.Element {
+export default function CoinButtons(coin: { [x: string]: string }): JSX.Element {
   const { setChartCoin } = useContext(CoinContext);
-  const address = `https://api.coingecko.com/api/v3/coins/${coin['coin']}`;
-  const { data, error } = useSWR(address, fetcher, { refreshInterval: 300000 });
+  const {data, isLoading, error} = useCoinGeckoSpotPrice(coin['coin']);
 
-  if (error) return <div>Error loading data</div>;
-  if (!data) return <div>loading...</div>;
+  if (error) return <p className={inter.className}>Exceeded rate limit...</p>;
+  if (isLoading) return <p className={inter.className}>loading...</p>;
 
   return (
-    <button className={styles.button} onClick={() => setChartCoin(data.name.toLowerCase())}>
+    <button className={styles.button} onClick={() => setChartCoin(data.id)}>
       <p className={inter.className}>
-        <Image src={`/${data.name.toLowerCase()}.svg`} alt={`${data.name} logo`} width={20} height={20} />
+        <Image src={`/${data.id}.svg`} alt={`${data.name} logo`} width={20} height={20} />
         <span>{data.name}</span>
       </p>
       <p className={inter.className}>
