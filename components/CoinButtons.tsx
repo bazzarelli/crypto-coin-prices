@@ -4,7 +4,6 @@ import styles from '@/styles/CoinButton.module.css'
 import { CoinContext } from '@/lib/context'
 import { Inter } from 'next/font/google'
 import { useContext } from 'react'
-import type { CoinSpotPrice } from '@/lib/types'
 import { useCoinGeckoSpotPrice } from '@/lib/useCoinGecko'
 
 const inter = Inter({ subsets: ['latin'] })

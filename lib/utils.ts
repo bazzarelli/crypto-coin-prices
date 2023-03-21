@@ -6,6 +6,10 @@ export const daysAfterNewYears2018 = (date: number) => {
     return moment('2018-01-01').add(date, 'days').format('ll');
 };
 
+export const tickLabelDaysAfterNewYears2018 = (date: number) => {
+    return moment('2018-01-01').add(date, 'days').format('MMM YYYY');
+};
+
 export const newYears2018 = () => {
     return moment('2018-01-01').format('X');
 };

@@ -5,7 +5,10 @@ import { useCoinGeckoRangePrice } from '@/lib/useCoinGecko'
 import CoinChartHeading from '@/components/CoinChartHeading'
 import CoinButtons from '@/components/CoinButtons'
 import { CoinContext } from '@/lib/context'
-import { daysAfterNewYears2018 } from '@/lib/utils'
+import {
+  daysAfterNewYears2018,
+  tickLabelDaysAfterNewYears2018
+} from '@/lib/utils'
 import type { Coin } from '@/lib/types'
 import styles from '@/styles/Home.module.css'
 import {
@@ -63,9 +66,8 @@ export default function Home(): React.ReactElement<Coin> {
                     <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                {/* TODO: get correct xaxis date labels and ticks to display */}
-                <XAxis stroke="#999999" ticks={[2019, 2020, 2021, 2022, 2023]} />
-                <YAxis style={{ fontFamily: 'Arial', fontSize: '0.8rem' }} label={{ fontFamily: 'Arial', value: 'USD', offset: 13, position: 'insideBottomLeft', fill: '#777ace' }} stroke="#EEEEEE" />
+                <XAxis style={{ fontFamily: 'Arial', fontSize: '0.5rem' }} stroke="#777ace" tickFormatter={(num) => tickLabelDaysAfterNewYears2018(parseInt(num))} />
+                <YAxis style={{ fontFamily: 'Arial', fontSize: '0.8rem' }} label={{ fontFamily: 'Arial', value: 'USD', offset: 13, position: 'insideBottomLeft', fill: '#777ace' }} stroke="#EEEEEE" tickFormatter={(num) => `$${num.toLocaleString('en-US', { maximumFractionDigits: 2 })}`  } />
                 <Tooltip labelFormatter={(value) => daysAfterNewYears2018(parseInt(value))} contentStyle={chartTooltipContentStyle} itemStyle={chartTooltipItemStyle} separator=': ' formatter={(value, name) => [`$${value.toLocaleString('en-US', { maximumFractionDigits: 2 })}`, name]} />
                 <Area type="monotone" dataKey="price" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
               </AreaChart>
