@@ -1,14 +1,16 @@
-import { CoinContext } from '@/lib/context'
+// import { CoinContext } from '@/lib/context'
+// import { useState } from 'react';
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
-import { useState } from 'react';
+
+import store from '@/lib/store';
+import { Provider } from 'react-redux';
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [chartCoin, setChartCoin] = useState('bitcoin');
 
   return (
-    <CoinContext.Provider value={{chartCoin, setChartCoin}}>
+    <Provider store={store}>
       <Component {...pageProps} />
-    </CoinContext.Provider>
+    </Provider>
   )
 }

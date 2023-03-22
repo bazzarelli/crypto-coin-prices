@@ -15,5 +15,5 @@ export const newYears2018 = () => {
 };
 
 export const today = () => {
-    return moment().format('X');
+    return moment().startOf('day').format('X');
 };
