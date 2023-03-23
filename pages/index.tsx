@@ -1,12 +1,5 @@
 // CORE
 import Head from 'next/head'
-// HOOKS
-import { useCoinGeckoRangePrice } from '@/lib/useCoinGecko'
-
-// STATE
-import { currentCoin } from '@/lib/store'
-import { useSelector } from 'react-redux'
-
 // COMPONENTS
 import CoinChartHeading from '@/components/CoinChartHeading'
 import CoinButtons from '@/components/CoinButtons'
@@ -18,13 +11,6 @@ import styles from '@/styles/Home.module.css'
 
 export default function Home(): React.ReactElement<Coin> {
   const myCoins = ['bitcoin', 'ethereum', 'cardano', 'aave'];
-  const chartCoin = useSelector(currentCoin);
-  const { data, isLoading, error } = useCoinGeckoRangePrice(chartCoin);
-  const pricesData = data?.prices.map((day: Coin['prices'][]) => {
-    return {
-      price: day[1]
-    }
-  });
 
   return (
     <>

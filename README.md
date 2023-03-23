@@ -5,7 +5,7 @@
 * Typescript
 * SWR hooks for data fetching and cacheing
 * Recharts to display crypto coin charts
-* Simple state management hooks (useState, useEffect, useContext)
+* Redux Toolkit
 
 [View live demo of WIP](https://crypto-coin-prices.vercel.app/)
 

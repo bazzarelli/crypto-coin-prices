@@ -31,7 +31,6 @@ export default function CoinChart(): React.ReactElement {
             price: day[1]
         }
     });
-    console.log(JSON.stringify(pricesData, null, 2))
 
     return (
         <div className={styles.chart}>

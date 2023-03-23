@@ -17,9 +17,8 @@ export const selectedCoinSlice = createSlice({
         }
     },
 })
-
-
 export const { updateCoin } = selectedCoinSlice.actions;
+// selectedCoinSlice
 
 const store = configureStore({
     reducer: {

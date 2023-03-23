@@ -35,6 +35,12 @@
     max-width: 30ch;
 }
 
+.button p:nth-last-child(1) {
+    font-size: 0.7rem;
+    color: #777ace;
+    text-align: left;
+}
+
 /* Mobile */
 @media (max-width: 700px) {
     .button {
