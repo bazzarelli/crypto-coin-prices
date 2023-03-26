@@ -1,11 +1,11 @@
 // CORE
 import Head from 'next/head'
 // COMPONENTS
-import CoinChartHeading from '@/components/CoinChartHeading'
-import CoinButtons from '@/components/CoinButtons'
-import CoinChart from '@/components/CoinChart'
+import CoinChartHeading from '../components/CoinChartHeading'
+import CoinButtons from '../components/CoinButtons'
+import CoinChart from '../components/CoinChart'
 // TYPES
-import type { Coin } from '@/lib/types'
+import type { Coin } from '../lib/types'
 // STYLES
 import styles from '@/styles/Home.module.css'
 

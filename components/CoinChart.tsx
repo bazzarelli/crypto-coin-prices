@@ -1,13 +1,13 @@
 import Image from 'next/image'
-import { useCoinGeckoRangePrice } from '@/lib/useCoinGecko'
-import type { Coin } from '@/lib/types'
-import { currentCoin } from '@/lib/store'
+import { useCoinGeckoRangePrice } from '../lib/useCoinGecko'
+import type { Coin } from '../lib/types'
+import { currentCoin } from '../lib/store'
 import { useSelector } from 'react-redux'
 
 import {
     daysAfterNewYears2018,
     tickLabelDaysAfterNewYears2018
-  } from '@/lib/utils'
+  } from '../lib/utils'
 
 import {
     AreaChart,
@@ -20,7 +20,7 @@ import {
 import {
     chartTooltipContentStyle,
     chartTooltipItemStyle
-} from '@/styles/rechartStyles'
+} from '../styles/rechartStyles'
 import styles from '@/styles/CoinChart.module.css'
 
 export default function CoinChart(): React.ReactElement {

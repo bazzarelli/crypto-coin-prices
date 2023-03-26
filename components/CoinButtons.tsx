@@ -2,12 +2,12 @@ import moment from 'moment'
 import Image from 'next/image'
 // state
 import { useDispatch } from 'react-redux'
-import { updateCoin } from '@/lib/store'
+import { updateCoin } from '../lib/store'
 // styles
 import styles from '@/styles/CoinButton.module.css'
 import { Inter } from 'next/font/google'
 // hooks
-import { useCoinGeckoSpotPrice } from '@/lib/useCoinGecko'
+import { useCoinGeckoSpotPrice } from '../lib/useCoinGecko'
 
 const inter = Inter({ subsets: ['latin'] })
 

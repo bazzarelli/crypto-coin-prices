@@ -14,10 +14,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "paths": {
-      "@/*": ["./*"]
-    }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/context.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/context.js", "__tests__/index.test.tsx"],
   "exclude": ["node_modules"]
 }
