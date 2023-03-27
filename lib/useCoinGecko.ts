@@ -1,5 +1,5 @@
 import useSWR from 'swr'
-import { newYears2018, today } from '@/lib/utils'
+import { newYears2018, today } from '../lib/utils'
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export const useCoinGeckoSpotPrice = (coin: string) => {

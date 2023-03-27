@@ -1,5 +1,5 @@
 import { Nothing_You_Could_Do } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import styles from '../styles/Home.module.css'
 import { capitalize } from '../lib/utils'
 // state: current coin
 import { currentCoin } from '../lib/store'

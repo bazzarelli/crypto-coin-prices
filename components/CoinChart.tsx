@@ -21,7 +21,7 @@ import {
     chartTooltipContentStyle,
     chartTooltipItemStyle
 } from '../styles/rechartStyles'
-import styles from '@/styles/CoinChart.module.css'
+import styles from '../styles/CoinChart.module.css'
 
 export default function CoinChart(): React.ReactElement {
     const chartCoin = useSelector(currentCoin);

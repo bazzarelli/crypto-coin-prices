@@ -7,7 +7,7 @@ import CoinChart from '../components/CoinChart'
 // TYPES
 import type { Coin } from '../lib/types'
 // STYLES
-import styles from '@/styles/Home.module.css'
+import styles from '../styles/Home.module.css'
 
 export default function Home(): React.ReactElement<Coin> {
   const myCoins = ['bitcoin', 'ethereum', 'cardano', 'aave'];

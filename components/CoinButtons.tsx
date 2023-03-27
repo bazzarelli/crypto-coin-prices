@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useDispatch } from 'react-redux'
 import { updateCoin } from '../lib/store'
 // styles
-import styles from '@/styles/CoinButton.module.css'
+import styles from '../styles/CoinButton.module.css'
 import { Inter } from 'next/font/google'
 // hooks
 import { useCoinGeckoSpotPrice } from '../lib/useCoinGecko'
