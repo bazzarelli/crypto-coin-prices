@@ -1,9 +1,8 @@
-// CORE
-import Head from 'next/head'
 // COMPONENTS
 import CoinChartHeading from '../components/CoinChartHeading'
 import CoinButtons from '../components/CoinButtons'
 import CoinChart from '../components/CoinChart'
+import HeadTag from '../components/HeadTag'
 // TYPES
 import type { Coin } from '../lib/types'
 // STYLES
@@ -14,15 +13,9 @@ export default function Home(): React.ReactElement<Coin> {
 
   return (
     <>
-      <Head>
-        <title>Coin prices</title>
-        <meta name="description" content="data fetching demo with coin gecko api" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <HeadTag />
       <main className={styles.main}>
         <CoinChartHeading />
-
         <CoinChart />
 
         <div className={styles.grid}>
@@ -32,7 +25,7 @@ export default function Home(): React.ReactElement<Coin> {
             </div>
           ))}
         </div>
-
+        
       </main>
     </>
   )
