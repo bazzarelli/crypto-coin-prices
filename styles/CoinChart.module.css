@@ -27,17 +27,6 @@
     top: 30px;
 }
 
-.error {
-    width: 90%;
-    height: 10rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    font-family: monospace;
-    color: #F90;
-}
-
 .circle {
     display: inline-block;
     transform: translateZ(1px);

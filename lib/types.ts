@@ -7,6 +7,16 @@ export interface Coin {
 export interface CoinSpotPrice {
     id: string;
     symbol: string;
+    image: {
+        small: string;
+        large: string;
+    };
     name: string;
     coin: string;
+    last_updated: string;
+    market_data: {
+        current_price: {
+            usd: number;
+        };
+    };
 }

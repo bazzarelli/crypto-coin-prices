@@ -1,7 +1,7 @@
 .main {
   display: flex;
   flex-direction: column;
-  padding: 5rem;
+  padding: 2rem;
   min-height: 100vh;
 }
 
@@ -14,13 +14,6 @@
   width: 100%;
   z-index: 2;
   font-family: var(--font-mono);
-}
-
-.description a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
 }
 
 .description p {
@@ -36,7 +29,18 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(25%, auto));
   width: var(--max-width);
+  justify-items: stretch;
+  align-items: center;
   max-width: 100%;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-family: monospace;
+  color: deeppink;
 }
 
 /* Enable hover only on non-touch devices */
@@ -79,12 +83,5 @@
     height: 3rem;
     background-color: black;
     z-index: 1;
-  }
-}
-
-/* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
-  .grid {
-    grid-template-columns: repeat(2, 50%);
   }
 }

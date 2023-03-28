@@ -12,7 +12,7 @@ export default function CoinChartHeading(): React.ReactElement {
 
   return (
     <div className={styles.description}>
-      <p data-testid="heading" className={nothing.className}>5 year price chart for {capitalize(chartCoin)}</p>
+      <p data-testid="heading" className={nothing.className}>5 year price chart for {capitalize(chartCoin.selectedCoin)}</p>
     </div>
   )
 }
