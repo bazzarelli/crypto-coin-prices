@@ -26,12 +26,14 @@ export default function Home(): React.ReactElement<Coin> {
 
 
         <Suspense fallback={<h3 className={styles.error}>Fetching crypto spot prices...</h3>}>
+          <div className={styles.list}>
           <div className={styles.grid}>
             {myCoins.map((coin) => (
               <div key={coin}>
                 <CoinButtons coin={coin} />
               </div>
             ))}
+          </div>
           </div>
         </Suspense>
 

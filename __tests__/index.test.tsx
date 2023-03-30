@@ -12,12 +12,13 @@ describe('Coin Chart Heading', () => {
 
   it('renders a heading', () => {
     store = mockStore(initialState)
+
     const { getByText } = render(
       <Provider store={store}>
         <CoinChartHeading />
       </Provider>
     )
 
-    expect(getByText(/5 year price chart/i)).toBeInTheDocument()
+    expect(getByText(/5 year price chart for/i)).toBeInTheDocument()
   })
 })

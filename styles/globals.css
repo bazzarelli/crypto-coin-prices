@@ -1,13 +1,10 @@
 :root {
   --max-width: 1100px;
-  --border-radius: 12px;
+  --border-radius: 4px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
-
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
   --callout-rgb: 238, 240, 241;
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
@@ -17,8 +14,6 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
     --callout-rgb: 136, 181, 203;
     --callout-border-rgb: 108, 108, 108;
     --card-rgb: 100, 100, 100;
@@ -41,7 +36,7 @@ body {
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(3,2,22);
-  background: linear-gradient(0deg, rgba(2,2,5,1) 10%, rgba(9,9,121,1) 72%, rgba(38,0,107,1) 100%);
+  background: linear-gradient(0deg, rgb(7, 12, 29) 10%, rgba(9,9,121,1) 77%, rgba(100, 73, 138, 0.7) 100%);
 }
 
 a {
