@@ -1,5 +1,5 @@
 .button {
-    padding: 1rem 1.2rem;
+    padding: 0.5rem 1rem;
     background: rgba(var(--card-rgb), 0);
     border: 1px solid rgba(var(--card-border-rgb), 0);
     transition: background 200ms, border 200ms;
@@ -10,6 +10,8 @@
     border-radius: var(--border-radius);
     margin-bottom: 20px;
     min-width: 10rem;
+    width: 12rem;
+    max-width: 100%;
 }
 
 .button:hover {
@@ -45,7 +47,7 @@
 /* Mobile */
 @media (max-width: 700px) {
     .button {
-        padding: 1rem 2.5rem;
+        padding: 0.5rem 1rem;
     }
 
     .button h2 {

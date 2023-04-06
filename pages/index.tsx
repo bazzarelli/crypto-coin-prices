@@ -6,8 +6,6 @@ import CoinList from '../components/CoinList'
 import CoinChart from '../components/CoinChart'
 import HeadTag from '../components/HeadTag'
 import CoinChartError from '../components/CoinChartError'
-// TYPES
-import type { Coin } from '../lib/types'
 // STYLES
 import styles from '../styles/Home.module.css'
 
