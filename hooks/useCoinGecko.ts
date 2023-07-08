@@ -8,7 +8,7 @@ export const useCoinGeckoSpotPrice = (coin: string) => {
     const address = `https://api.coingecko.com/api/v3/coins/${coin}`;
     const { data } = useSWR(address, fetcher, {
         suspense: true,
-        refreshInterval: 60000,
+        refreshInterval: 300000,
         fallbackData: {
             id: 'coin',
             symbol: '---',
@@ -30,7 +30,9 @@ export const useCoinGeckoSpotPrice = (coin: string) => {
 
 export const useCoinGeckoRangePrice = (coin: string) => {
     const address = `https://api.coingecko.com/api/v3/coins/${coin}/market_chart/range?vs_currency=usd&from=${newYears2018()}&to=${today()}}`;
-    const { data, isLoading } = useSWR(address, fetcher);
+    const { data, isLoading } = useSWR(address, fetcher, {
+        revalidateOnMount: true,
+    });
     return {
         data,
         isLoading,
