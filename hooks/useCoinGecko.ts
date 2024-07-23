@@ -20,6 +20,21 @@ export const useCoinGeckoSpotPrice = (coin: string) => {
   const address = `https://api.coingecko.com/api/v3/coins/${coin}`;
   const { data } = useSWR(address, fetcherForCoin, {
     refreshInterval: 15000,
+    fallbackData: {
+      id: "coin",
+      symbol: "xxx",
+      image: {
+        small: "/wind-spinner.svg",
+      },
+      name: "Coin?",
+      coin: "coin",
+      last_updated: "2024-01-01T00:00:00.000Z",
+      market_data: {
+        current_price: {
+          usd: 0,
+        },
+      },
+    },
   });
   return { data };
 };
