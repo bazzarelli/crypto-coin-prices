@@ -14,26 +14,12 @@ const fetcher = async (url: string) => {
   return cache.get(url);
 };
 
+const fetcherForCoin = (url: string) => fetch(url).then((res) => res.json());
+
 export const useCoinGeckoSpotPrice = (coin: string) => {
   const address = `https://api.coingecko.com/api/v3/coins/${coin}`;
-  const { data } = useSWR(address, fetcher, {
-    suspense: true,
-    refreshInterval: 0,
-    fallbackData: {
-      id: "coin",
-      symbol: "---",
-      image: {
-        small: "",
-      },
-      name: "coin",
-      coin: "coin",
-      last_updated: "2024-01-01T00:00:00.000Z",
-      market_data: {
-        current_price: {
-          usd: 0,
-        },
-      },
-    },
+  const { data } = useSWR(address, fetcherForCoin, {
+    refreshInterval: 15000,
   });
   return { data };
 };
