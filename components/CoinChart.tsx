@@ -3,10 +3,7 @@ import { useCoinGeckoRangePrice } from "../hooks/useCoinGecko";
 import { currentCoin } from "../lib/store";
 import { useSelector } from "react-redux";
 
-import {
-  daysAfterNewYears2019,
-  tickLabelDaysAfterAYearAgo,
-} from "../lib/utils";
+import { tickLabelDaysAfterAYearAgo } from "../lib/utils";
 
 import {
   AreaChart,
@@ -25,51 +22,6 @@ import styles from "../styles/CoinChart.module.css";
 export default function CoinChart(): React.ReactElement {
   const apiKey = process.env.NEXT_PUBLIC_GECKO_API_KEY;
   const chartCoin = useSelector(currentCoin);
-
-  const data = [
-    {
-      name: "Page A",
-      uv: 4000,
-      pv: 2400,
-      price: 2400,
-    },
-    {
-      name: "Page B",
-      uv: 3000,
-      pv: 1398,
-      price: 2210,
-    },
-    {
-      name: "Page C",
-      uv: 2000,
-      pv: 9800,
-      price: 2290,
-    },
-    {
-      name: "Page D",
-      uv: 2780,
-      pv: 3908,
-      price: 2000,
-    },
-    {
-      name: "Page E",
-      uv: 1890,
-      pv: 4800,
-      price: 2181,
-    },
-    {
-      name: "Page F",
-      uv: 2390,
-      pv: 3800,
-      price: 2500,
-    },
-    {
-      name: "Page G",
-      uv: 3490,
-      pv: 4300,
-      price: 2100,
-    },
-  ];
 
   const { prices, error } = useCoinGeckoRangePrice(
     chartCoin.selectedCoin,
@@ -128,7 +80,9 @@ export default function CoinChart(): React.ReactElement {
             }
           />
           <Tooltip
-            labelFormatter={(value) => daysAfterNewYears2019(parseInt(value))}
+            labelFormatter={(value) =>
+              tickLabelDaysAfterAYearAgo(parseInt(value))
+            }
             contentStyle={chartTooltipContentStyle}
             itemStyle={chartTooltipItemStyle}
             separator=": "

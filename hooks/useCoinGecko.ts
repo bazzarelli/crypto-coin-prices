@@ -22,7 +22,7 @@ export const useCoinGeckoSpotPrice = (coin: string) => {
     refreshInterval: 15000,
     fallbackData: {
       id: "coin",
-      symbol: "xxx",
+      symbol: "-",
       image: {
         small: "/wind-spinner.svg",
       },
