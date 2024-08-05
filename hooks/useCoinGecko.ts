@@ -1,6 +1,6 @@
 import useSWR from "swr";
 
-import { oneYearAgoFromNow, today } from "../lib/utils";
+import { oneYearAgoFromNow, today, todayToISOString } from "../lib/utils";
 const cache = new Map();
 
 const fetcher = async (url: string) => {
@@ -14,10 +14,14 @@ const fetcher = async (url: string) => {
   return cache.get(url);
 };
 
+const capitalize = (s: string | string[]) =>
+  (s && s[0].toUpperCase() + s.slice(1)) || "";
+
 const fetcherForCoin = (url: string) => fetch(url).then((res) => res.json());
 
 export const useCoinGeckoSpotPrice = (coin: string) => {
   const address = `https://api.coingecko.com/api/v3/coins/${coin}`;
+  const coinCapitalized = capitalize(coin);
   const { data } = useSWR(address, fetcherForCoin, {
     refreshInterval: 15000,
     fallbackData: {
@@ -26,9 +30,9 @@ export const useCoinGeckoSpotPrice = (coin: string) => {
       image: {
         small: "/wind-spinner.svg",
       },
-      name: "Coin?",
-      coin: "coin",
-      last_updated: "2024-01-01T00:00:00.000Z",
+      name: coinCapitalized,
+      coin: coin,
+      last_updated: todayToISOString(),
       market_data: {
         current_price: {
           usd: 0,

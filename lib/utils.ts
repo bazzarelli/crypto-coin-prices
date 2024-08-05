@@ -17,3 +17,7 @@ export const oneYearAgoFromNow = () => {
 export const today = () => {
   return moment().startOf("day").format("X");
 };
+
+export const todayToISOString = () => {
+  return moment().startOf("day").toISOString();
+};
