@@ -35,8 +35,8 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: #030216;
-  background: linear-gradient(358deg, #64498a, #090979, #030216);
+  background: #090979;
+  background: linear-gradient(45deg, #64498a, #090979, #030216);
   background-size: 600% 600%;
   animation: AnimationName 30s ease infinite;
 }
