@@ -6,18 +6,15 @@ import { updateCoin } from "../lib/selectedCoinSlice";
 // styles
 import styles from "../styles/CoinButton.module.css";
 import { Inter } from "next/font/google";
-// hooks
-import { useCoinGeckoSpotPrice } from "../hooks/useCoinGecko";
 
 const inter = Inter({ subsets: ["latin"] });
-
-export default function CoinButtons(coin: {
+type Coin = {
   [x: string]: string;
-}): JSX.Element {
-  const dispatch = useDispatch();
-  const { data } = useCoinGeckoSpotPrice(coin["coin"]);
+};
 
-  console.log(data);
+export default function CoinButtons(coin: { coin: Coin }): JSX.Element {
+  const dispatch = useDispatch();
+  const coinInfo = coin.coin;
 
   return (
     <button
@@ -25,27 +22,27 @@ export default function CoinButtons(coin: {
       onClick={() =>
         dispatch(
           updateCoin({
-            coin: data.id,
-            image: data.image.large,
+            coin: coinInfo.id,
+            image: coinInfo.image,
           })
         )
       }
     >
       <p className={inter.className}>
         <Image
-          src={data.image.small}
-          alt={`${data.name} logo`}
+          src={coinInfo.image}
+          alt={`${coinInfo.name} logo`}
           width={20}
           height={20}
         />
-        <span>{data.name}</span>
+        <span>{coinInfo.name}</span>
       </p>
       <p className={inter.className}>
-        {data.symbol.toUpperCase()} &rarr; $
-        {data.market_data.current_price.usd.toLocaleString()}
+        {coinInfo.symbol.toUpperCase()} &rarr; $
+        {coinInfo.current_price.toLocaleString()}
       </p>
       <p className={inter.className}>
-        {moment(data.last_updated).format("MMMM D | h:mm a")}
+        {moment(coinInfo.last_updated).format("MMMM D | h:mm a")}
       </p>
     </button>
   );

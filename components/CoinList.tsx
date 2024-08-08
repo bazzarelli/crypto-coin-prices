@@ -1,8 +1,10 @@
 import styles from "../styles/Home.module.css";
 import CoinButtons from "./CoinButtons";
+// hooks
+import { useCoinGeckoListMarket } from "../hooks/useCoinGecko";
 
 export default function CoinList(): React.ReactElement {
-  const myCoins = [
+  const coins = [
     "bitcoin",
     "ethereum",
     "cardano",
@@ -11,15 +13,30 @@ export default function CoinList(): React.ReactElement {
     "polkadot",
     "dogecoin",
     "litecoin",
+    "usd-coin",
+    "steth",
+    "trx",
+    "pepe",
+    "zcash",
+    "stellar",
+    "eos",
+    "binancecoin",
+    "ripple",
+    "tether",
+    "vechain",
+    "iota",
+    "xrp",
+    "dash",
+    "zilliqa",
   ];
+  const { data } = useCoinGeckoListMarket(coins);
+  // console.log("data~~~>", data);
 
   return (
     <div className={styles.list}>
       <div className={styles.grid}>
-        {myCoins.map((coin) => (
-          <div key={coin}>
-            <CoinButtons coin={coin} />
-          </div>
+        {data.map((coin: any) => (
+          <CoinButtons key={coin.id} coin={coin} />
         ))}
       </div>
     </div>
