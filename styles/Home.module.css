@@ -59,9 +59,8 @@
 
   .list {
     overflow-y: auto;
-    min-height: 150px;
-    height: 280px;
-    max-height: 400px;
+    height: calc(100vh - 6rem);
+    margin-bottom: 2rem;
   }
 
   .grid {

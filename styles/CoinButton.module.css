@@ -47,7 +47,15 @@
 /* Mobile */
 @media (max-width: 700px) {
     .button {
+        display: block;
         padding: 0.5rem 1rem;
+        width: auto;
+        margin: 0 40px 20px 40px;
+        text-align: center;
+    }
+
+    .button p:nth-last-child(1) {
+        text-align: center;
     }
 
     .button h2 {
