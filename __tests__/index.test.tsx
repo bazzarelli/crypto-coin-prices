@@ -6,7 +6,12 @@ import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
 
 describe('Coin Chart Heading', () => {
-  const initialState = { selectedCoin: 'bitcoin' };
+  const initialState = {
+    selectedCoin: {
+      selectedCoin: 'bitcoin',
+      selectedCoinImage: 'mock-url'
+    }
+  };
   const mockStore = configureStore();
   let store;
 
@@ -19,6 +24,6 @@ describe('Coin Chart Heading', () => {
       </Provider>
     )
 
-    expect(getByText(/5 year price chart for/i)).toBeInTheDocument()
+    expect(getByText(/Bitcoin price \(past 365 days\)/i)).toBeInTheDocument()
   })
 })
