@@ -108,3 +108,10 @@ export const useCoinGeckoRangePrice = (
     error,
   };
 };
+
+export const searchCoin = async (query: string) => {
+  const address = `https://api.coingecko.com/api/v3/search?query=${query}&x_cg_api_key=${process.env.NEXT_PUBLIC_GECKO_API_KEY}`;
+  const response = await fetch(address);
+  const data = await response.json();
+  return data.coins;
+};
