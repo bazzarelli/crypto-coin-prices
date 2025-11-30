@@ -1,3 +1,22 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .buttonContainer {
     position: relative;
 }
@@ -13,8 +32,9 @@
     border: 1px solid rgba(var(--card-border-rgb), 0.15);
     border-radius: var(--border-radius);
     margin-bottom: 20px;
+    margin-right: 20px;
     min-width: 10rem;
-    width: 12rem;
+    width: 100%;
     max-width: 100%;
 }
 
@@ -29,20 +49,46 @@
     margin-left: 0.5rem;
 }
 
-.removeCoinButton {
+.removeContainer {
     position: absolute;
-    right: 3.5rem;
-    top: -0.5rem;
+    right: 0.5rem;
+    top: 0.5rem;
+    z-index: 10;
+}
+
+.removeCoinButton {
     background-color: transparent;
     border: none;
     color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
-    font-size: 1.5rem;
-    z-index: 10;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .removeCoinButton:hover {
-    color: rgba(255, 0, 0, 1);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.tooltip {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    background-color: #2558a0ff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    cursor: pointer;
+    margin-bottom: 5px;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.tooltip:hover {
+    background-color: #2d6dc7ff;
 }
 
 .button h2 {
@@ -85,31 +131,9 @@
 
 /* Mobile */
 @media (max-width: 700px) {
-    .buttonContainer {
-        position: relative;
-        padding-left: 2rem;
-    }
-
     .button {
-        display: block;
-        padding: 0.5rem 1rem;
-        width: auto;
-        margin: 0 40px 20px 40px;
-        text-align: center;
-    }
+        margin-bottom: 0;
 
-    .button p:nth-last-child(1) {
-        text-align: center;
-    }
-
-    .button h2 {
-        margin-bottom: 0.5rem;
-    }
-
-    .removeCoinButton {
-        right: 5rem;
-        top: 0;
-        font-size: 2rem;
     }
 
 }

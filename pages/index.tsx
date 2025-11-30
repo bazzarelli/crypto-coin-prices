@@ -27,7 +27,9 @@ export default function Home(): React.ReactElement {
             <h3 className={styles.error}>Fetching crypto spot prices...</h3>
           }
         >
-          <CoinList />
+          <div className={styles.container}>
+            <CoinList />
+          </div>
         </Suspense>
       </main>
     </>

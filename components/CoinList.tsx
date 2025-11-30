@@ -1,4 +1,5 @@
 import styles from "../styles/Home.module.css";
+import coinStyles from "../styles/CoinButton.module.css";
 import CoinButtons from "./CoinButtons";
 import AddCoinButton from "./AddCoinButton";
 // hooks
@@ -13,7 +14,7 @@ export default function CoinList(): React.ReactElement {
 
   return (
     <div className={styles.list}>
-      <div className={styles.grid}>
+      <div className={coinStyles.grid}>
         <AddCoinButton />
         {data && data.map((coin: any) => (
           <CoinButtons key={coin.id} coin={coin} />
