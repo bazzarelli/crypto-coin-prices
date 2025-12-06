@@ -10,14 +10,14 @@ describe('coinList reducer', () => {
       coins: [
         "bitcoin",
         "ethereum",
-        "cardano",
-        "aave",
+        "tether",
+        "xrp",
+        "bnb",
         "solana",
-        "polkadot",
-        "dogecoin",
-        "helium",
-        "thorchain",
-        "filecoin",
+        "usdc",
+        "tron",
+        "lido-staked-ether",
+        "dogecoin"
       ],
     });
   });
