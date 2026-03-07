@@ -1,6 +1,8 @@
 .chart {
   padding: 2rem 0 0;
   position: relative;
+  width: 100%;
+  overflow: hidden;
 }
 
 .chart img {
@@ -25,6 +27,14 @@
   position: absolute;
   left: 90px;
   top: 30px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.chartFrame {
+  width: 100%;
+  min-width: 0;
+  touch-action: pan-y;
 }
 
 .circle {
@@ -64,8 +74,18 @@
 
 /* Mobile */
 @media (max-width: 700px) {
-  .chart::before {
-    transform: none;
-    height: 300px;
+  .chart {
+    padding-top: 1.25rem;
+  }
+
+  .chartFrame {
+    touch-action: pan-y;
+  }
+
+  .chartImageCont {
+    left: 1.5rem;
+    top: 1.25rem;
+    transform: scale(0.72);
+    transform-origin: top left;
   }
 }

@@ -58,19 +58,24 @@
   }
 
   .list {
-    overflow-y: auto;
-    height: calc(100vh - 6rem);
+    width: 100%;
+    min-width: 0;
+    overflow: visible;
+    height: auto;
     margin-bottom: 2rem;
   }
 
   .grid {
     grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 100%;
     margin-bottom: 20px;
-    text-align: center;
+    text-align: left;
+    padding: 0 10px;
   }
 
   .button {
-    padding: 1rem 2.5rem;
+    padding: 0.875rem 1rem;
   }
 
   .button h2 {

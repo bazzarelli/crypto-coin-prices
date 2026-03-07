@@ -3,6 +3,7 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     width: 100%;
+    min-width: 0;
 }
 
 @media (max-width: 1024px) {
@@ -19,6 +20,7 @@
 
 .buttonContainer {
     position: relative;
+    min-width: 0;
 }
 
 .button {
@@ -32,10 +34,11 @@
     border: 1px solid rgba(var(--card-border-rgb), 0.15);
     border-radius: var(--border-radius);
     margin-bottom: 20px;
-    margin-right: 20px;
-    min-width: 10rem;
+    margin-right: 0;
+    min-width: 0;
     width: 100%;
     max-width: 100%;
+    overflow: hidden;
 }
 
 .button:hover {
@@ -101,7 +104,8 @@
     opacity: 0.8;
     font-size: 0.9rem;
     line-height: 1.5;
-    max-width: 30ch;
+    max-width: 100%;
+    overflow-wrap: anywhere;
 }
 
 .button p:nth-last-child(1) {
@@ -133,7 +137,26 @@
 @media (max-width: 700px) {
     .button {
         margin-bottom: 0;
-
+        padding: 0.75rem 0.875rem;
+        min-height: 5rem;
     }
 
+    .button p {
+        font-size: 0.8rem;
+        line-height: 1.35;
+        max-width: calc(100% - 2rem);
+    }
+
+    .button p:nth-last-child(1) {
+        font-size: 0.68rem;
+    }
+
+    .button span {
+        margin-left: 0.4rem;
+    }
+
+    .removeContainer {
+        right: 0.4rem;
+        top: 0.4rem;
+    }
 }
