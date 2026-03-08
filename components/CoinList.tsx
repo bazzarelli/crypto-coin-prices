@@ -15,10 +15,9 @@ export default function CoinList(): React.ReactElement {
   return (
     <div className={styles.list}>
       <div className={coinStyles.grid}>
+        {data &&
+          data.map((coin: any) => <CoinButtons key={coin.id} coin={coin} />)}
         <AddCoinButton />
-        {data && data.map((coin: any) => (
-          <CoinButtons key={coin.id} coin={coin} />
-        ))}
       </div>
     </div>
   );
